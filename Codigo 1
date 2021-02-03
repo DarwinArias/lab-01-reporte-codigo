@@ -1,0 +1,25 @@
+//Darwin Arias Díaz 2018-0472
+
+const int LED1=2;
+const int LED2=3;
+const int PB=4;
+
+void setup()
+{
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(PB, INPUT);
+}
+
+//LED1
+
+const int ONE_SECOND=1000;
+const int HALF_SECOND=500;
+
+void loop()
+{
+  digitalWrite(LED1, HIGH);
+  delay(ONE_SECOND); 
+  digitalWrite(LED1, LOW);
+  delay(HALF_SECOND);
+}
