@@ -1,0 +1,56 @@
+//Darwin Arias Díaz 2018-0472
+
+const int LED1=2;
+const int LED2=3;
+const int PB=4;
+
+void setup()
+{
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(PB, INPUT);
+}
+
+//Todo junto
+
+uint16_t counter = 0;
+uint16_t counter_LED1 = 0;
+bool status = false;
+bool status_LED1 = false;
+
+void loop()
+{
+  int pb_val = digitalRead(PB);
+  counter++;
+  counter_LED1++;
+  
+  if(status && !pb_val && counter>=80){
+    counter=0;
+    status = false;
+  }else if(!status && !pb_val && counter >=80){
+    counter = 0;
+    status = true;
+  }else if(status && pb_val && counter>=5){
+    counter=0;
+    status = false;
+  }else if(!status && pb_val && counter >=15){
+    counter = 0;
+    status = true;
+  }
+
+  if(status_LED1 && counter_LED1 >= 20){
+    counter_LED1=0;
+    status_LED1 = false;
+  }else if(!status_LED1 && counter_LED1 >=10){
+    counter_LED1 = 0;
+    status_LED1 = true;
+  }
+     
+   //Estado de ambos led
+     digitalWrite(LED1, status_LED1);
+     digitalWrite(LED2, status);
+     
+     
+  //Delay de 50 milisegundos
+  delay(50);
+}
